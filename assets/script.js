@@ -17,18 +17,45 @@ const slides = [
 	}
 ]
 
-// Event Listeners sur les flèches
+// elements
 const arrowLeft = document.getElementById('arrow-left');
 const arrowRight = document.getElementById('arrow-right');
+const image = document.querySelector("#banner > img");
+const text = document.querySelector("#banner > p");
+const dots = document.getElementsByClassName('dot')
 
+// index
+let index = 0
+
+// event Listeners sur les flèches
 arrowLeft.addEventListener('click', function(event) {
     event.preventDefault();
 	event.stopPropagation();
+	index--
+
+	// elements
+	image.setAttribute('src', './assets/images/slideshow/' + slides[index].image);
+	text.innerHTML = slides[index].tagLine;
+	dots[index + 1].classList.remove('dot_selected');
+	dots[index].classList.add('dot_selected');
+
+	// debug 
 	console.log('click a gauche')
+	console.log(index)
 });
 
 arrowRight.addEventListener('click', function(event) {
     event.preventDefault();
 	event.stopPropagation();
+	index++
+
+	// elements
+	image.setAttribute('src', './assets/images/slideshow/' + slides[index].image);
+	text.innerHTML = slides[index].tagLine;
+	dots[index - 1].classList.remove('dot_selected');
+	dots[index].classList.add('dot_selected');
+
+	// debug 
 	console.log('click a droite')
+	console.log(index)
 });
