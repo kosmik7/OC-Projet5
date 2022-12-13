@@ -133,10 +133,10 @@ header {
 	height: auto;
 	z-index: 1;
 }
-#banner .arrow_left {
+#banner #arrow-left {
 	left: 4%;
 }
-#banner .arrow_right {
+#banner #arrow-right {
 	right: 4%;
 }
 /* Gestion des points du carrousel */
