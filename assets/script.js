@@ -27,35 +27,37 @@ const dots = document.getElementsByClassName('dot')
 // index
 let index = 0
 
+// fonction avec les modifications à appliquer au click
+function editElements(index, previousIndex) {
+	image.setAttribute('src', './assets/images/slideshow/' + slides[index].image);
+	text.innerHTML = slides[index].tagLine;
+	dots[previousIndex].classList.remove('dot_selected');
+	dots[index].classList.add('dot_selected');
+  }
+  
 // event Listeners sur les flèches
 arrowLeft.addEventListener('click', function(event) {
     event.preventDefault();
 	event.stopPropagation();
+
+	previousIndex = index
 	index--
+	if (index == -1) {
+		index = 3
+	}
 
-	// elements
-	image.setAttribute('src', './assets/images/slideshow/' + slides[index].image);
-	text.innerHTML = slides[index].tagLine;
-	dots[index + 1].classList.remove('dot_selected');
-	dots[index].classList.add('dot_selected');
-
-	// debug 
-	console.log('click a gauche')
-	console.log(index)
+	editElements(index, previousIndex)
 });
 
 arrowRight.addEventListener('click', function(event) {
     event.preventDefault();
 	event.stopPropagation();
+
+	previousIndex = index
 	index++
+	if (index == 4) {
+		index = 0
+	}
 
-	// elements
-	image.setAttribute('src', './assets/images/slideshow/' + slides[index].image);
-	text.innerHTML = slides[index].tagLine;
-	dots[index - 1].classList.remove('dot_selected');
-	dots[index].classList.add('dot_selected');
-
-	// debug 
-	console.log('click a droite')
-	console.log(index)
+	editElements(index, previousIndex)
 });
